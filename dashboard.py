@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 # -------------------- USTAWIENIA --------------------
 st.set_page_config(page_title="Trading Dashboard", layout="wide")
-st.title("📊 Trading Dashboard 15m - LONG & SHORT + Skuteczność")
+st.title("📊 Trading Dashboard 5m - LONG & SHORT + Skuteczność")
 ticker = st.sidebar.selectbox("Wybierz instrument:", ["BTC-USD", "ETH-USD", "AAPL", "SPY"])
 
 # -------------------- POBIERANIE DANYCH --------------------
@@ -54,12 +54,14 @@ for i in range(2, len(df)):
             entry_price = price
     else:
         if position == "LONG" and (rsi > 60 or macdh < 0):
-pnl = float(price) - float(entry_price)
-            trades.append(pnl)
+            pnl = float(price) - float(entry_price)
+            if isinstance(pnl, (int, float)):
+                trades.append(pnl)
             position = None
         elif position == "SHORT" and (rsi < 50 or macdh > 0):
-pnl = float(entry_price) - float(price)
-            trades.append(pnl)
+            pnl = float(entry_price) - float(price)
+            if isinstance(pnl, (int, float)):
+                trades.append(pnl)
             position = None
 
 # -------------------- SYGNAŁ AKTUALNY --------------------
