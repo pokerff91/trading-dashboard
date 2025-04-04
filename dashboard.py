@@ -9,7 +9,7 @@ st.title("📊 Trading Dashboard 15m - LONG & SHORT + Skuteczność")
 ticker = st.sidebar.selectbox("Wybierz instrument:", ["BTC-USD", "ETH-USD", "AAPL", "SPY"])
 
 # -------------------- POBIERANIE DANYCH --------------------
-df = yf.download(ticker, period="7d", interval="15m")
+df = yf.download(ticker, period="7d", interval="5m")
 
 # -------------------- RSI --------------------
 def calculate_rsi(data, period=14):
