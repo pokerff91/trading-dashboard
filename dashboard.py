@@ -54,11 +54,11 @@ for i in range(2, len(df)):
             entry_price = price
     else:
         if position == "LONG" and (rsi > 60 or macdh < 0):
-            pnl = price - entry_price
+pnl = float(price) - float(entry_price)
             trades.append(pnl)
             position = None
         elif position == "SHORT" and (rsi < 50 or macdh > 0):
-            pnl = entry_price - price
+pnl = float(entry_price) - float(price)
             trades.append(pnl)
             position = None
 
@@ -86,8 +86,8 @@ total = len(trades)
 wins = len([t for t in trades if isinstance(t, (int, float)) and t > 0])
 losses = len([t for t in trades if isinstance(t, (int, float)) and t <= 0])
 skutecznosc = round((wins / total) * 100, 2) if total > 0 else 0
-sredni_zysk = round(sum(trades) / total, 2) if total > 0 else 0
-laczny_zysk = round(sum(trades), 2)
+sredni_zysk = round(float(sum(trades)) / total, 2) if total > 0 else 0
+laczny_zysk = round(float(sum(trades)), 2)
 
 # -------------------- WYSWIETLANIE --------------------
 st.metric("Aktualny sygnał", signal)
