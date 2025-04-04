@@ -83,8 +83,8 @@ else:
 
 # -------------------- STATYSTYKI --------------------
 total = len(trades)
-wins = len([t for t in trades if t > 0])
-losses = len([t for t in trades if t <= 0])
+wins = len([t for t in trades if isinstance(t, (int, float)) and t > 0])
+losses = len([t for t in trades if isinstance(t, (int, float)) and t <= 0])
 skutecznosc = round((wins / total) * 100, 2) if total > 0 else 0
 sredni_zysk = round(sum(trades) / total, 2) if total > 0 else 0
 laczny_zysk = round(sum(trades), 2)
