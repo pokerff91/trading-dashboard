@@ -63,7 +63,6 @@ for i in range(2, len(df)):
             if isinstance(pnl, (int, float)):
                 trades.append(pnl)
             position = None
-
 # -------------------- SYGNAŁ AKTUALNY --------------------
 latest_rsi = df["RSI"].dropna().iloc[-1]
 latest_macdh = df["MACD_hist"].dropna().iloc[-1]
